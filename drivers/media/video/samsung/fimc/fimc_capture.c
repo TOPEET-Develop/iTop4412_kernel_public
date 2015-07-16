@@ -2025,7 +2025,11 @@ int fimc_s_crop_capture(void *fh, struct v4l2_crop *a)
 
 	mutex_lock(&ctrl->v4l2_lock);
 	ctrl->cap->crop = a->c;
+/* remove by cym 20150715 */
+#if 0
 	ctrl->cam->window = a->c;//jmq.add.for camera in crop. MT9D115 only support one image ratio.We need crop by fimc.. if sensor can support all ratio, can remove
+#endif
+/* end remove */
 	mutex_unlock(&ctrl->v4l2_lock);
 
 	return 0;
@@ -2181,11 +2185,15 @@ int fimc_streamon_capture(void *fh)
 					fimc_info2("enum_framesizes width = %d,\
 						height = %d\n", cam->width,
 						cam->height);
+/* remove bym cym 20150715 */
+#if 0
                                    //jmq.add.for camera in crop. get the crop info here
                                    if(ctrl->cap->crop.left != 0 || ctrl->cap->crop.top != 0
                                         || ctrl->cap->crop.width != 0 || ctrl->cap->crop.height != 0){
                                            cam->window = ctrl->cap->crop;
                                    }
+#endif
+/* end remove */
 				}
 			}
 

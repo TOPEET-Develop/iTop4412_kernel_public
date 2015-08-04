@@ -387,7 +387,7 @@ static void __init dm9620_reset(void)
 	s3c_gpio_setpull(EXYNOS4_GPC0(1), S3C_GPIO_PULL_UP);
 	gpio_set_value(EXYNOS4_GPC0(1), 0);
 	
-	mdelay(5);
+        mdelay(1000);//dg change 5  to 1000 for test
 
 	gpio_set_value(EXYNOS4_GPC0(1), 1);
 	gpio_free(EXYNOS4_GPC0(1));
@@ -3504,7 +3504,9 @@ static unsigned int tc4_sleep_gpio_table[][3] = {
 	//{ EXYNOS4_GPC0(0),  S3C_GPIO_SLP_INPUT,	S3C_GPIO_PULL_DOWN}, //MD_PWON
 	{ EXYNOS4_GPX3(3),  S3C_GPIO_SLP_INPUT,	S3C_GPIO_PULL_DOWN}, //MD_PWON
 #endif
-	{ EXYNOS4_GPC0(1),  S3C_GPIO_SLP_INPUT,	S3C_GPIO_PULL_DOWN}, //VLED_ON
+         //dg cancel 2015-07-29
+        //{ EXYNOS4_GPC0(1),  S3C_GPIO_SLP_INPUT,	S3C_GPIO_PULL_DOWN}, //VLED_ON
+
 	{ EXYNOS4_GPC0(2),  S3C_GPIO_SLP_PREV,	S3C_GPIO_PULL_NONE}, //MD_RSTN
 #ifdef CONFIG_SMM6260_MODEM
 	//{ EXYNOS4_GPC0(3),  S3C_GPIO_SLP_PREV,	S3C_GPIO_PULL_NONE}, //AP_SLEEP
@@ -3764,7 +3766,10 @@ static unsigned int tc4_sleep_gpio_table[][3] = {
 
 
 	{ EXYNOS4_GPC0(0),  S3C_GPIO_SLP_INPUT,	S3C_GPIO_PULL_DOWN}, //MD_PWON
-	{ EXYNOS4_GPC0(1),  S3C_GPIO_SLP_INPUT,	S3C_GPIO_PULL_DOWN}, //VLED_ON
+
+          //dg cancel 2015-07-29
+        //{ EXYNOS4_GPC0(1),  S3C_GPIO_SLP_INPUT,	S3C_GPIO_PULL_DOWN}, //VLED_ON
+
 #ifdef CONFIG_SMM6260_MODEM
 	{ EXYNOS4_GPC0(2),  S3C_GPIO_SLP_PREV,  S3C_GPIO_PULL_NONE}, //MD_RSTN  //lisw_2012.029 for Modem do not go into L3
 #else
